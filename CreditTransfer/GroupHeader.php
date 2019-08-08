@@ -44,6 +44,11 @@ class GroupHeader {
     protected $creationDateTime;
 
     /**
+     * @var bool|null
+     */
+    protected $batchBooking = null;
+
+    /**
      * @param $messageIdentification
      * @param $initiatingPartyName
      */
@@ -96,6 +101,22 @@ class GroupHeader {
     }
 
     /**
+     * @return bool
+     */
+    public function isBatchBooking()
+    {
+        return $this->batchBooking;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBatchBookingSet()
+    {
+        return $this->batchBooking !== null;
+    }
+
+    /**
      * 
      * @param integer $controlSum
      * @return \Sepa\CreditTransfer\GroupHeader
@@ -143,6 +164,14 @@ class GroupHeader {
     public function setNumberOfTransactions($numberOfTransactions) {
         $this->numberOfTransactions = $numberOfTransactions;
         return $this;
+    }
+
+    /**
+     * @param bool|null $batchBooking
+     */
+    public function setBatchBooking($batchBooking)
+    {
+        $this->batchBooking = $batchBooking;
     }
 
 }

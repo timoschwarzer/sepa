@@ -40,6 +40,11 @@ class CreditTransfer extends Base {
         $controlSum = $this->createElement('CtrlSum', $groupHeader->getControlSum());
         $groupHeaderElement->appendChild($controlSum);
 
+        if ($groupHeader->isBatchBookingSet()) {
+            $batchBooking = $this->createElement('BtchBookg', $groupHeader->isBatchBooking() ? 'TRUE' : 'FALSE');
+            $groupHeaderElement->appendChild($batchBooking);
+        }
+
         $initiatingParty = $this->createElement('InitgPty');
         $initiatingPartyName = $this->createElement('Nm', $groupHeader->getInitiatingPartyName());
         $initiatingParty->appendChild($initiatingPartyName);
